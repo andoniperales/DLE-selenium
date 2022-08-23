@@ -17,3 +17,8 @@ You'll need the chromedriver binary: https://chromedriver.chromium.org/downloads
 ```
 python dle.py {term}
 ```
+OR
+```
+import dle
+dle.definicion({word})
+```
