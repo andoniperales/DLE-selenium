@@ -27,7 +27,7 @@ def main(entrada):
         '--allow-running-insecure-content'
         ]
     for parameter in options_list:
-        options.add_argument(f"{parameter}")
+        options.add_argument(parameter)
 
 # Get & print term's information
     
