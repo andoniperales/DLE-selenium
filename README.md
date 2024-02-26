@@ -10,15 +10,4 @@ pip install fake_headers selenium
 
 ## Other requirements
 
-You'll need the chromedriver binary: https://chromedriver.chromium.org/downloads.
-
-## Usage
-
-```
-python dle.py {term}
-```
-OR
-```
-import dle
-dle.definicion({word})
-```
+You'll need the geckodriver binary: https://github.com/mozilla/geckodriver/releases.
