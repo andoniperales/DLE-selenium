@@ -1,45 +1,41 @@
 #!/usr/bin/python
 
-from sys import argv
+import os
 from fake_headers import Headers
-from selenium.webdriver import Chrome as chrome, ChromeOptions as Options
+from selenium.webdriver import Firefox as firefox, FirefoxOptions as Options
 from selenium.webdriver.common.by import By
 
-
-def main(entrada):	
-    # Generate fake user-agent (the site rejects headless operations otherwise)
-
-    header = Headers(
-        browser="chrome",
-        os="win",
-        headers=False
-    )
-    
-    UA = header.generate()['User-Agent']
+def definicion(term):
+	# Generate fake user-agent (the site rejects headless operations otherwise)
+	header = Headers(
+		browser="firefox",
+		os="win",
+		headers=False
+	)
 	
-    # Set webdriver options 
-    
-    options = Options()
-    options_list = [
-        f'user-agent={UA}', 
-        '--headless', 
-        '--disable-gpu', 
-        '--allow-running-insecure-content'
-        ]
-    for parameter in options_list:
-        options.add_argument(parameter)
+	UA = header.generate()['User-Agent']
+	
+	# Set webdriver options 
+	options = Options()
+	options_list = [
+		f'user-agent={UA}', 
+		'--headless', 
+		'--disable-gpu', 
+		'--allow-running-insecure-content'
+	]
 
-# Get & print term's information
-    
-    with chrome(options=options) as driver:
-        driver.implicitly_wait(5)
-        driver.get(f"https://dle.rae.es/{entrada}")
-        definicion = driver.find_element(By.CSS_SELECTOR, "div#resultados")	
-        print(definicion.text)  
+	for parameter in options_list:
+		options.add_argument(f"{parameter}")
 
-def definicion(palabra):
-        main(palabra)
+	# Get & print term's information
+	with firefox(options=options) as driver:
+		driver.implicitly_wait(5)
+		driver.get(f"https://dle.rae.es/{term}")
+		resultados = driver.find_element(By.TAG_NAME, "article").text
+		return resultados	
+		driver.quit()
 
 if __name__ == '__main__':
-    entrada = argv[1]
-    main(entrada)
+	term = input('Search for a term\n')
+	os.system('clear')
+	print(definicion(term))
