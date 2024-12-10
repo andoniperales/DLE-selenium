@@ -1,7 +1,9 @@
 #!/usr/bin/python
 
-import os, re
+import os
+import re
 import baseselenium
+from sys import argv
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException
 
@@ -42,5 +44,5 @@ def definicion(term):
 		driver.quit()
 
 if __name__ == '__main__':
-	term = input('Search for a term\n')
+	term = argv[1]
 	definicion(term)
