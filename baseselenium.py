@@ -3,7 +3,7 @@
 from fake_headers import Headers
 from selenium.webdriver import Firefox as firefox, FirefoxOptions as Options
 
-def generate():
+def fakeit():
 	# Generate fake user-agent (the site rejects headless operations otherwise)
 	header = Headers(
 		browser="firefox",
