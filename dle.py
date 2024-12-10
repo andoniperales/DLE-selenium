@@ -44,5 +44,9 @@ def definicion(term):
 		driver.quit()
 
 if __name__ == '__main__':
-	term = argv[1]
-	definicion(term)
+	try:
+		term = argv[1]
+	except IndexError:
+		print("usage: dle [term]")
+	else:
+		definicion(term)
