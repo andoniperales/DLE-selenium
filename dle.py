@@ -6,7 +6,7 @@ from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException
 
 def definicion(term):
-	driver = baseselenium.generate()
+	driver = baseselenium.fakeit()
 	
 	# Get & print term's information
 	try:
